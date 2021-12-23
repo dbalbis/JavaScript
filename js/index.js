@@ -1,158 +1,51 @@
-/* ARRAYS */
+const contenedor = document.querySelector('#contenedor-platos');
+const tableBody = document.querySelector('#carritoContenedor');
 
-/* const menu = ['[1] Milanesas ', '[2] Asado ', '[3] Ensalada ']; */
+stockPlatos.forEach((prod) => {
+  const div = document.createElement('div');
 
-/* CONSTRUCTOR */
+  div.className = 'card-m m-4';
+  div.style = 'width: 18rem;';
 
-function Plato(id, nombre, stock, precio, img) {
-  this.id = id;
-  this.nombre = nombre;
-  this.stock = stock;
-  this.precio = precio;
-  this.img = img;
+  div.innerHTML = `<div class="card" style="width: 18rem;">
+  <img src="${prod.img}" class="card-img-top" style=" height: 270px" style=" width: auto" alt="...">
+  <div class="card-body">
+    <h3 class="card-title">${prod.nombre}</h3>
+    <p><strong> Precio: $${prod.precio} </strong></p>
+    <div class="col text-center">
+    <button onclick='agregarAlCarrito(${prod.id})' class=" btn btn-primary">Comprar</button>
+    </div>
+  </div>
+</div>
+  `;
+
+  contenedor.appendChild(div);
+});
+
+const carrito = [];
+
+/* AGREGAR AL CARRITO */
+function agregarAlCarrito(prodId) {
+  let plato = stockPlatos.find((item) => item.id == prodId);
+  carrito.push(plato);
+  mostrarCompra();
 }
 
-let Plato1 = new Plato('1', 'Plato 1:', '50', '$500', './img/plato1.jpg');
-let Plato2 = new Plato('2', 'Plato 2:', '60', '$650', './img/plato2.jpg');
-let Plato3 = new Plato('3', 'Plato 3:', '70', '$700', './img/plato3.jpg');
+/* MOSTRAR COMPRA */
 
-let misPlatos = [];
+const mostrarCompra = () => {
+  tableBody.innerHTML = '';
 
-misPlatos.push(Plato1, Plato2, Plato3);
-
-/* DOM */
-
-let contenedorPlatos = document.getElementById('contenedor-platos');
-
-for (let plato of misPlatos) {
-  let div = document.createElement('div');
-  div.setAttribute('class', 'plato');
-
-  div.innerHTML = `
-<h3> ${plato.nombre} ${plato.precio} </h3>
-<img src="${plato.img}" alt="" width="200">
-</br>
-<button type="button" class="button" id="producto${plato.id}">Comprar</button>
-`;
-
-  contenedorPlatos.appendChild(div);
-}
-
-/* ESTO CREO QUE YA NO SIRVE MAS */
-
-/* FUNCION -SOLO PARA MODO TAKE AWAY */
-
-/* function extra(num2) {
-  var num2 = 80;
-  suma = precio + num2;
-} */
-
-/* BIENVENIDA */
-
-/* alert('Bienvenido a Abu Dhabi. Déjate sorprender con nuestros platos.');
-
-alert('Te traemos los mas finos sabores Arabes a la puerta de tu casa.');
-
-let modo = +prompt('[1] Desea Take-Away o [2] Delivery?');
-
-while (modo > 2 || modo < 0 || modo == null || /\D/.test(modo) || modo == '') {
-  modo = +prompt('[1] Desea Take-Away o [2] Delivery?');
-}
- */
-/* MODO TAKE AWAY */
-
-/* if (modo === 1) {
-  alert(
-    'Los pedidos para retirar en el local tienen un costo de $80 extra por las bandejas de plastico.'
-  );
-  celular = +prompt('Ingrese su celular.');
-  while (celular == null || /\D/.test(celular) || celular == '') {
-    celular = +prompt('Ingrese su celular.');
-  }
-  let bandeja = +prompt(
-    'Nuestro menu es: Bandeja[1]: $400 Bandeja[2]: $560 Bandeja[3]: $1100. Ingrese el número de bandeja:'
-  );
-  while (
-    bandeja > 3 ||
-    bandeja < 1 ||
-    bandeja == null ||
-    /\D/.test(bandeja) ||
-    bandeja == ''
-  ) {
-    bandeja = +prompt(
-      'Nuestro menu es: Bandeja[1]: $400 Bandeja[2]: $560 Bandeja[3]: $1100. Ingrese el número de bandeja:'
-    );
-  }
-
-  switch (bandeja) {
-    case 1:
-      var precio = 400;
-      console.log(precio);
-      extra();
-      alert(
-        `Estamos preprando su Plato. Total: ${suma}, se enviara a ${celular} un mensaje cuando este listo. Te esperamos!`
-      );
-      alert('Gracias, Chauu!');
-      break;
-    case 2:
-      var precio = 560;
-      extra();
-      alert(
-        `Estamos preprando su Plato. Total: ${suma}, se enviara a ${celular} un mensaje cuando este listo. Te esperamos!`
-      );
-      alert('Gracias, Chauu!');
-      break;
-    case 3:
-      var precio = 1100;
-      extra();
-      alert(
-        `Estamos preprando su Plato. Total: ${suma}, se enviara a ${celular} un mensaje cuando este listo. Te esperamos!`
-      );
-      alert('Gracias, Chauu!');
-      break;
-  }
-}
- */
-/* MODO DELIVERY */
-
-/* if (modo === 2) {
-  direccion = prompt('Ingrese su dirección:');
-  while (direccion == null || direccion == '') {
-    direccion = prompt('Ingrese su dirección:');
-  }
-  let plato = +prompt('Ingrese el numero: ' + menu);
-
-  while (
-    plato > 3 ||
-    plato < 1 ||
-    plato == null ||
-    /\D/.test(plato) ||
-    plato == ''
-  ) {
-    plato = +prompt('Ingrese el numero: ' + menu);
-  }
-  switch (plato) {
-    case 1:
-      Plato1.listarPlatos();
-      alert(
-        `Estamos preprando su Plato. Se enviara a: ${direccion}. Disfruta la comida!`
-      );
-      alert('Gracias, Chauu!');
-      break;
-    case 2:
-      Plato2.listarPlatos();
-      alert(
-        `Estamos preprando su Plato. Se enviara a: ${direccion}. Disfruta la comida!`
-      );
-      alert('Gracias, Chauu!');
-      break;
-    case 3:
-      Plato3.listarPlatos();
-      alert(
-        `Estamos preprando su Plato. Se enviara a: ${direccion}. Disfruta la comida!`
-      );
-      alert('Gracias, Chauu!');
-      break;
-  }
-}
- */
+  carrito.forEach((prod) => {
+    const tr = document.createElement('tr');
+    tr.className = 'table-primary';
+    tr.innerHTML = `
+            <th scope='row'>${prod.id}</th>
+            <td ><img src="${prod.img}" alt="" width= "180px" height= "180px"></td>
+            <td >${prod.nombre}</td>
+            <td >${prod.precio}</td>
+    `;
+    tableBody.appendChild(tr);
+    localStorage.setItem('Compra', JSON.stringify(carrito));
+  });
+};
