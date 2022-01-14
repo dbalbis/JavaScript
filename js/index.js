@@ -43,9 +43,25 @@ const mostrarCompra = () => {
             <th scope='row'>${prod.id}</th>
             <td ><img src="${prod.img}" alt="" width= "180px" height= "180px"></td>
             <td >${prod.nombre}</td>
-            <td >${prod.precio}</td>
+            <td >$${prod.precio}</td>
     `;
     tableBody.appendChild(tr);
+
+    /* TOTAL CON JQUERY */
+
+    const precio = Object.values(carrito).reduce(
+      (acc, { precio }) => acc + precio,
+      0
+    );
+
+    $('.total p').append(`${precio}`);
+    console.log(precio);
     localStorage.setItem('Compra', JSON.stringify(carrito));
   });
 };
+
+/* BOTON REALIZAR PEDIDO  */
+
+$('.total button').on('click', function () {
+  alert('Compra realizada con exito.');
+});

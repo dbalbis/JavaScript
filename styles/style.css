@@ -34,4 +34,14 @@ div#contenedor-platos a.boton-comprar {
 div.platosContainer {
   padding: 10px;
 }
+
+div.total p {
+  font-size: 1.3em;
+  font-weight: 500;
+  text-align: right;
+}
+
+div.total button a {
+  text-align: right;
+}
 /*# sourceMappingURL=style.css.map */
