@@ -1,5 +1,6 @@
 const contenedor = document.querySelector('#contenedor-platos');
 const tableBody = document.querySelector('#carritoContenedor');
+const URL = 'https://jsonplaceholder.typicode.com/users';
 
 stockPlatos.forEach((prod) => {
   const div = document.createElement('div');
@@ -64,4 +65,27 @@ const mostrarCompra = () => {
 
 $('.total button').on('click', function () {
   alert('Compra realizada con exito.');
+});
+
+/* MOSTRANDO ULTIMAS 10 COMPRAS AJAX Y JQUERY */
+
+$('.ultimos-pedidos').append(
+  $.get(URL, (response, status) => {
+    if (status !== 'success') {
+      throw new Error('Error');
+    }
+
+    console.log(response);
+    for (const user of response) {
+      $('.ultimos-pedidos').prepend(`
+      
+      <h4> ${user.email} </h4>`);
+    }
+  })
+);
+
+/* ANIMACION OCULTAR MIS COMRPAS */
+
+$('#ocultar-compras').click(() => {
+  $('.mis-compras').slideToggle(1500);
 });

@@ -68,19 +68,30 @@
       ></div>
     </div>
     <!-- CARRITO -->
-    <h3>Mis Compras</h3>
+
     <div class="container">
-      <table class="table text-center">
-        <thead>
-          <tr>
-            <th scope="col">ID:</th>
-            <th scope="col">FOTO:</th>
-            <th scope="col">NOMBRE:</th>
-            <th scope="col">PRECIO:</th>
-          </tr>
-        </thead>
-        <tbody id="carritoContenedor"></tbody>
-      </table>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-auto">
+          <button class="btn btn-link" id="ocultar-compras">
+            Ocultar / Mostrar
+          </button>
+        </div>
+      </div>
+      <div class="mis-compras">
+        <h3>Mis Compras</h3>
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th scope="col">ID:</th>
+              <th scope="col">FOTO:</th>
+              <th scope="col">NOMBRE:</th>
+              <th scope="col">PRECIO:</th>
+            </tr>
+          </thead>
+          <tbody id="carritoContenedor"></tbody>
+        </table>
+      </div>
       <div class="total">
         <p>Total: $</p>
 
@@ -95,6 +106,12 @@
       </div>
     </div>
     <!-- FOOTER -->
+
+    <!-- ULTIMAS 10 COMPRAS -->
+    <div class="container">
+      <h2 id="ultimos-pedidos">Últimos Clientes</h2>
+      <div class="ultimos-pedidos"></div>
+    </div>
     <div class="container-fluid">
       <footer class="py-3 my-4" style="background-color: #2f588b">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">

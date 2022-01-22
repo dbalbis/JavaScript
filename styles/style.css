@@ -23,6 +23,13 @@ h3 {
   font-size: 1.7em;
 }
 
+h4 {
+  text-align: center;
+  color: #2f588b;
+  font-family: 'Kalam', cursive;
+  font-size: 1.1em;
+}
+
 p {
   text-align: center;
 }
@@ -43,5 +50,9 @@ div.total p {
 
 div.total button a {
   text-align: right;
+}
+
+h2#ultimos-pedidos {
+  margin: 15px;
 }
 /*# sourceMappingURL=style.css.map */
