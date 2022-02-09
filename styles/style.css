@@ -42,6 +42,10 @@ div.platosContainer {
   padding: 10px;
 }
 
+div.platosContainer th.titulo {
+  font-size: 1.2em;
+}
+
 div.total p {
   font-size: 1.3em;
   font-weight: 500;
@@ -54,5 +58,18 @@ div.total button a {
 
 h2#ultimos-pedidos {
   margin: 15px;
+}
+
+td.precio__total {
+  font-size: 1.2em;
+}
+
+th.productos__total {
+  font-size: 1.2em;
+}
+
+td.cantidad__productos {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */
